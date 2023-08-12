@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 질문 등록 -->
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">사진 업로드</h5>
+    <form method="post" enctype="multipart/form-data" class="my-3">
+        {{ form.csrf_token }}
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field, errors in form.errors.items() %}
+            <strong>{{ form[field].label }}</strong>
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+         <div class="mb-3">
+            <label for="subject">제목</label>
+            <input type="text" class="form-control" name="subject" id="subject"
+            value="{{ form.subject.data or '' }}">
+        </div>
+        {{form.csrf_token}}
+        <div class="mb-3">
+<!--            <label for="content">사진</label>-->
+<!--            <input type="file" id="content" name="content" accept="image/*">-->
+            <label>
+                <span>{{ form.content(class="form-control-file")}}</span>
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+
+    </form>
+</div>
+{% endblock %}
+
+
+
