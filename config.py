@@ -9,4 +9,4 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 SECRET_KEY = "dev"
 
 # class BaseConfig:
-UPLOAD_FOLDER = './pybo/static/images'
+UPLOAD_FOLDER = '/projects/myproject/pybo/static/images'
